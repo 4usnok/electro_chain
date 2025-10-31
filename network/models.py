@@ -81,6 +81,8 @@ class Network(models.Model):
         max_digits=15,
         decimal_places=2,
         help_text="Задолженность с точностью до копеек",
+        null=True,
+        blank=True,
     )
     time_create_fact = models.TimeField(
         auto_now_add=True,
