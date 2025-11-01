@@ -1,7 +1,9 @@
 from django.db import models
 
+
 class ContactsFactory(models.Model):
     """Модель для контактов"""
+
     email_cont = models.EmailField(
         max_length=254,
         help_text="Почта завода",
@@ -18,16 +20,15 @@ class ContactsFactory(models.Model):
         max_length=100,
         help_text="Улица",
     )
-    number_phone_cont = models.CharField(
-        max_length=20,
-        help_text="Номер телефона"
-    )
+    number_phone_cont = models.CharField(max_length=20, help_text="Номер телефона")
 
     def __str__(self):
         return self.email_cont
 
+
 class ProductsFactory(models.Model):
     """Модель для продукта"""
+
     name_pr = models.CharField(
         max_length=100,
         help_text="Название продукта",
@@ -43,18 +44,17 @@ class ProductsFactory(models.Model):
     def __str__(self):
         return self.name_pr
 
+
 class Network(models.Model):
     """Модель для сети"""
 
     LEVEL_CHOICES = [
-        (0, 'Завод'),
-        (1, 'Розничная сеть'),
-        (2, 'Индивидуальный предприниматель'),
+        (0, "Завод"),
+        (1, "Розничная сеть"),
+        (2, "Индивидуальный предприниматель"),
     ]
     level = models.IntegerField(
-        choices=LEVEL_CHOICES,
-        verbose_name="factory_level",
-        help_text="звенья"
+        choices=LEVEL_CHOICES, verbose_name="factory_level", help_text="звенья"
     )
 
     name_fact = models.CharField(
@@ -71,7 +71,7 @@ class Network(models.Model):
         help_text="Продукты",
     )
     supplier_fact = models.ForeignKey(
-        'self',
+        "self",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
@@ -94,5 +94,5 @@ class Network(models.Model):
 
     class Meta:
         ordering = [
-            'debt_fact',
+            "debt_fact",
         ]

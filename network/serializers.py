@@ -6,10 +6,12 @@ from network.models import Network
 
 class NetworkSerializer(serializers.ModelSerializer):
     """Сериализатор для модели Network"""
+
     class Meta:
         model = Network
         fields = "__all__"
-        read_only_fields = ('debt_fact',)
+        read_only_fields = ("debt_fact",)
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -17,7 +19,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         # Добавление пользовательских полей в токен
-        token['username'] = user.username
-        token['email'] = user.email
+        token["username"] = user.username
+        token["email"] = user.email
 
         return token
